@@ -2,15 +2,22 @@
 import pyautogui
 import os
 from time import sleep
+import pyperclip
 
 def startupChrome(link):
     os.system("chrome "+link)
     sleep(5)
 
 def webaction():
-    pyautogui.click("codePoint.png")
+    while True:
+        try:
+            pyautogui.click("codePoint.png")
+            break
+        except:
+            sleep(1)
+    
     pyautogui.hotkey("ctrl","a")
-    pyautogui.write("""
+    pyperclip.copy("""
     function start(){
     // Create a new form, then add a checkbox question, a multiple choice question,
 // a page break, then a date question and a grid of questions.
@@ -37,13 +44,24 @@ form.addGridItem()
 Logger.log('Published URL: ' + form.getPublishedUrl());
 Logger.log('Editor URL: ' + form.getEditUrl());
 }
-    """.replace("""
-    """,""))
+    """)
+    sleep(1)
+    pyautogui.hotkey("ctrl","v")
     pyautogui.hotkey("ctrl","s")
-    sleep(2)
-    pyautogui.click("runpicture.png")
-    sleep(5)
-    pyautogui.click("certification.png")
+    sleep(1)
+    while True:
+        try:
+            pyautogui.click("runpicture.png")
+            break
+        except:
+            sleep(1)
+    sleep(1)
+    while True:
+        try:
+            pyautogui.click("certification.png")
+            break
+        except:
+            sleep(1)
     #認証の続きは後で書く
 
 if __name__ == "__main__":
