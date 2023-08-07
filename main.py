@@ -61,8 +61,23 @@ Logger.log('Editor URL: ' + form.getEditUrl());
             pyautogui.click("certification.png")
             break
         except:
-            sleep(1)
-    #認証の続きは後で書く
+            sleep(0.1)
+    sleep(1)
+    while True:
+        try:
+            pyautogui.click("google_certification1.png")
+            break
+        except:
+            sleep(0.5)
+    sleep(1)
+    while True:
+        try:
+            pyautogui.press("down")
+            pyautogui.click("google_certification2.png")
+            break
+        except:
+            sleep(0.5)
+    sleep(1)
 
 if __name__ == "__main__":
     startupChrome("https://script.google.com/home/projects/create")
